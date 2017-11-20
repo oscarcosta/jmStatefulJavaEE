@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>#{msgs['verificacao.notaFiscal.titulo']}</title>
+    </head>
+    <body>
+        <h:form>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:panelGroup rendered="#{verificacaoNotaFiscal.notaFiscal != null}">
+                <h:panelGrid columns="2" title="#{msgs['prestador.titulo']}">
+                    <h:outputLabel value="#{msgs['prestador.nome']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.prestador.nome}"/>
+
+                    <h:outputLabel value="#{msgs['prestador.documento']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.prestador.documento}"/>
+
+                    <h:outputLabel value="#{msgs['prestador.endereco']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.prestador.endereco.enderecoFormatado}"/>
+
+                    <h:outputLabel value="#{msgs['prestador.municipio']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.prestador.endereco.municipio}"/>
+
+                    <h:outputLabel value="#{msgs['prestador.uf']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.prestador.endereco.uf}"/>
+                </h:panelGrid>
+                <br/>
+                <h:panelGrid columns="2" title="#{msgs['tomador.titulo']}">
+                    <h:outputLabel value="#{msgs['tomador.nome']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.tomador.nome}"/>
+
+                    <h:outputLabel value="#{msgs['tomador.documento']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.tomador.documento}"/>
+
+                    <h:outputLabel value="#{msgs['tomador.endereco']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.tomador.endereco.enderecoFormatado}"/>
+
+                    <h:outputLabel value="#{msgs['tomador.municipio']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.tomador.endereco.municipio}"/>
+
+                    <h:outputLabel value="#{msgs['tomador.uf']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.tomador.endereco.uf}"/>
+                </h:panelGrid>
+                <br/>
+                <h:dataTable var="item" value="#{verificacaoNotaFiscal.notaFiscal.itens}" title="#{msgs['itens.titulo']}" >
+                    <h:column>
+                        <f:facet name="header" >
+                            <h:outputText value="#{msgs['item.descricao']}"/>
+                        </f:facet>    
+                        <h:outputText value="#{item.descricao}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" >
+                            <h:outputText value="#{msgs['item.quantidade']}"/>
+                        </f:facet>    
+                        <h:outputText value="#{item.quantidade}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" >
+                            <h:outputText value="#{msgs['item.valorUnitario']}"/>
+                        </f:facet>    
+                        <h:outputText value="#{item.valorUnitario}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header" >
+                            <h:outputText value="#{msgs['item.valorTotal']}"/>
+                        </f:facet>    
+                        <h:outputText value="#{item.valorTotal}"/>
+                    </h:column>
+                </h:dataTable>
+                <br/>
+                <h:panelGrid columns="2" title="#{msgs['notaFiscal.titulo']}">
+                    <h:outputLabel value="#{msgs['notaFiscal.valorTotal']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.valorTotal}"/>
+                    
+                    <h:outputLabel value="#{msgs['notaFiscal.dataHoraEmissao']}"/>
+                    <h:outputText value="#{verificacaoNotaFiscal.notaFiscal.dataHoraEmissao}">
+                        <f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+                    </h:outputText>
+                </h:panelGrid>
+            </h:panelGroup>
+        </h:form>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>#{msgs['aplicacao.titulo']}</title>
+        <h:outputStylesheet name="css/base.css"/>
+    </h:head>
+    <h:body>
+        <h1>#{msgs['aplicacao.titulo']}</h1>
+        <h:form>
+            <h:panelGrid columns="1">
+                <h:commandLink action="/nf/emissao" value="#{msgs['emissao.notaFiscal.titulo']}"/>
+                <h:commandLink action="/nf/verificacao" value="#{msgs['verificacao.notaFiscal.titulo']}">
+                    <f:param name="id" value="1"/>
+                </h:commandLink>
+                <h:inputText />
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

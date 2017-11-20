@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>#{msgs['emissao.notaFiscal.titulo']}</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <br/>
+            <h:outputLabel value="#{msgs['prestador.titulo']}"/>
+            <h:panelGrid id="prestador" columns="2">
+                <h:outputLabel value="#{msgs['prestador.documento']}"/>
+                <h:inputText id="prest_doc" value="#{emissaoNotaFiscal.prestador.documento}">
+                    <f:ajax listener="#{emissaoNotaFiscal.findPrestadorByDocumento()}" render="@this prestador"/>
+                </h:inputText>
+                
+                <h:outputLabel value="#{msgs['prestador.nome']}"/>
+                <h:inputText id="prest_nome" value="#{emissaoNotaFiscal.prestador.nome}"/>
+
+                <h:outputLabel value="#{msgs['prestador.endereco']}"/>
+                <h:panelGroup>
+                    <h:inputText id="prest_end_log" value="#{emissaoNotaFiscal.prestador.endereco.logradouro}"/>&nbsp;
+                    <h:inputText id="prest_end_num" value="#{emissaoNotaFiscal.prestador.endereco.numero}"/>&nbsp;
+                    <h:inputText id="prest_end_com" value="#{emissaoNotaFiscal.prestador.endereco.complemento}"/>&nbsp;
+                    <h:inputText id="prest_end_bai" value="#{emissaoNotaFiscal.prestador.endereco.bairro}"/>&nbsp;
+                </h:panelGroup>
+
+                <h:outputLabel value="#{msgs['prestador.municipio']}"/>
+                <h:inputText id="prest_end_mun" value="#{emissaoNotaFiscal.prestador.endereco.municipio}"/>
+
+                <h:outputLabel value="#{msgs['prestador.uf']}"/>
+                <h:inputText id="prest_end_uf" value="#{emissaoNotaFiscal.prestador.endereco.uf}"/>
+                
+                <h:outputLabel value="#{msgs['prestador.cep']}"/>
+                <h:inputText id="prest_end_cep" value="#{emissaoNotaFiscal.prestador.endereco.cep}"/>
+            </h:panelGrid>
+            <br/>
+            <h:outputLabel value="#{msgs['tomador.titulo']}"/>
+            <h:panelGrid id="tomador" columns="2" >
+                <h:outputLabel value="#{msgs['tomador.documento']}"/>
+                <h:inputText id="toma_doc" value="#{emissaoNotaFiscal.tomador.documento}">
+                    <f:ajax listener="#{emissaoNotaFiscal.findTomadorByDocumento()}" render="@this tomador"/>
+                </h:inputText>
+                
+                
+                <h:outputLabel value="#{msgs['tomador.nome']}"/>
+                <h:inputText id="toma_nom" value="#{emissaoNotaFiscal.tomador.nome}"/>
+
+                <h:outputLabel value="#{msgs['tomador.endereco']}"/>
+                <h:panelGroup>
+                    <h:inputText id="toma_end_log" value="#{emissaoNotaFiscal.tomador.endereco.logradouro}" title="#{msgs['tomador.logradouro']}"/>&nbsp;
+                    <h:inputText id="toma_end_num" value="#{emissaoNotaFiscal.tomador.endereco.numero}" title="#{msgs['tomador.numero']}"/>&nbsp;
+                    <h:inputText id="toma_end_com" value="#{emissaoNotaFiscal.tomador.endereco.complemento}" title="#{msgs['tomador.complemento']}"/>&nbsp;
+                    <h:inputText id="toma_end_bai" value="#{emissaoNotaFiscal.tomador.endereco.bairro}" title="#{msgs['tomador.bairro']}"/>&nbsp;
+                </h:panelGroup>
+
+                <h:outputLabel value="#{msgs['tomador.municipio']}"/>
+                <h:inputText id="toma_end_mun" value="#{emissaoNotaFiscal.tomador.endereco.municipio}"/>
+
+                <h:outputLabel value="#{msgs['tomador.uf']}"/>
+                <h:inputText id="toma_end_uf" value="#{emissaoNotaFiscal.tomador.endereco.uf}"/>
+                
+                <h:outputLabel value="#{msgs['tomador.cep']}"/>
+                <h:inputText id="toma_end_cep" value="#{emissaoNotaFiscal.tomador.endereco.cep}"/>
+            </h:panelGrid>
+            <br/>
+            <h:outputLabel value="#{msgs['itens.titulo']}"/>
+            <h:dataTable id="itens" var="item" value="#{emissaoNotaFiscal.itens}" >
+                <h:column>
+                    <f:facet name="header" >
+                        <h:outputText value="#{msgs['item.descricao']}"/>
+                    </f:facet>    
+                    <h:inputText id="iten_des" value="#{item.descricao}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >
+                        <h:outputText value="#{msgs['item.quantidade']}"/>
+                    </f:facet>    
+                    <h:inputText id="iten_qtd" value="#{item.quantidade}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >
+                        <h:outputText value="#{msgs['item.valorUnitario']}"/>
+                    </f:facet>    
+                    <h:inputText id="iten_uni" value="#{item.valorUnitario}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >
+                        <h:outputText value="#{msgs['item.valorTotal']}"/>
+                    </f:facet>    
+                    <h:outputText id="iten_tot" value="#{item.valorTotal}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header" >
+                        &nbsp;
+                    </f:facet>    
+                    <h:commandButton id="btn_remo" action="#{emissaoNotaFiscal.removeItem(item)}" value="#{msgs['botao.removeItem']}"/>
+                </h:column>
+            </h:dataTable>
+            <br/>
+            <h:panelGrid columns="2" title="#{msgs['notaFiscal.titulo']}">                
+                <h:outputLabel value="#{msgs['notaFiscal.valorTotal']}"/>
+                <h:outputText id="total" value="#{emissaoNotaFiscal.valorTotal}"/>
+            </h:panelGrid>
+            <br/>
+            <h:panelGroup>
+                <h:commandButton id="btn_add" action="#{emissaoNotaFiscal.adicionaItem()}" value="#{msgs['botao.adicionaItem']}"/>
+                <h:commandButton id="btn_criar" action="#{emissaoNotaFiscal.criaNotaFiscal()}" value="#{msgs['botao.criarNota']}"/>
+                <h:commandButton id="btn_atual" action="#{emissaoNotaFiscal.atualizaNotaFiscal()}" value="#{msgs['botao.atualizarNota']}"/>
+                <h:commandButton id="btn_salv" action="#{emissaoNotaFiscal.salvaNotaFiscal()}" value="#{msgs['botao.salvarNota']}"/>
+            </h:panelGroup>
+
+        </h:form>
+    </h:body>
+</html>

@@ -1,0 +1,151 @@
+root { 
+    display: block;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3a4f54;
+    background-color: #dfecf1;
+    font-size: small;
+}
+
+a {
+    color: #e33b06;
+}
+
+input[type="text"], textarea, select {
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+    border-bottom-style: solid;
+}
+
+#menu {
+    float: left;
+    width: 100px;
+    background-color: #b2d5d6;
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+#menu li {
+    text-align: left;
+    margin-left: -25px;
+    margin-bottom: 5px;
+}
+
+#main {
+    float: left;
+    margin-left: 10px;
+}
+
+table {
+    empty-cells: show;
+}
+
+form.jsfcrud_list_form th, td th {
+    font-size: x-small;
+    color: #4e6a71;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    letter-spacing: 3px;
+    text-align: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #b2d5d6;
+}
+
+td {
+    vertical-align: top;
+    padding-bottom: 8px;
+    font-size: small;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #b2d5d6;
+    border-right-color: #b2d5d6;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+}
+
+table.jsfcrud_table {
+    border: #b2d5d6 solid 1px;
+    width: 450px;
+    margin-bottom: 2px;
+}
+
+table.jsfcrud_table_large {
+    border: #b2d5d6 solid 1px;
+    width: 650px;
+    margin-bottom: 2px;
+}
+
+table.jsfcrud_table_controls {
+    border: none;
+    margin-bottom: -10px;
+}
+
+td.jsfcrud_table_comands {
+    text-align: left;
+    width: 140px;
+}
+
+td.jsfcrud_table_space {
+    
+}
+
+th.jsfcrud_col {
+    width: 180px;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+td.jsfcrud_col_label {
+    width: 120px;
+    text-align: right;
+    vertical-align: baseline;
+}
+
+td.jsfcrud_col_input {
+    text-align: left;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
